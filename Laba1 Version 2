@@ -1,0 +1,141 @@
+import java.util.Scanner;
+ class labaone
+ {
+
+ 	public static void main(String[] args) 
+ 	{
+ 		conclusion ();
+ 		switch(inputt()) //выборка какой класс вызывает
+ 		{
+ 			case 1:
+ 			{
+ 				Prime prime = new Prime(); //вызывает простые числа
+ 				prime.main();
+ 				break;
+ 			}
+ 			case 2:
+ 			{
+ 				Palindrom palindrom = new Palindrom();
+ 				palindrom.main(); // вызывает палиндром
+ 				break;
+ 			}
+ 			case 3:
+ 			{
+ 				System.exit(0);
+ 				break;
+ 			}
+ 		}
+
+     }  
+ 	
+ 	private static void conclusion () //вывод текста для выбора
+ 	{
+ 		System.out.println("Select the number of tasks");
+ 		System.out.println("1) Prime number");
+ 		System.out.println("2) Palindrom");
+ 		System.out.println("3) Output");
+ 		System.out.print(": ");
+ 	}
+
+ 	private static int inputt()//считывает значение с терминала 
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextInt();
+ 	}
+ }
+ 	
+ class Prime
+ {
+ 	public static void main()  //основной метод который вызывает остальные 
+ 	{
+ 		conclusion ();
+ 		int N = inputt ();
+ 		for (int i = 2; i <= N; i++)
+ 		{
+ 			if(prime(i) == 1)
+ 			{
+ 				TheOutput(i);
+ 			}
+ 		}
+ 	}
+ 	
+ 	private static int prime (int N)// метод для подсчета
+ 	{
+ 		int b = 0;
+ 		for(int k = 2; k <= N; k++) 
+ 		{
+ 			if(N % k == 0)
+ 			{
+ 				b++;
+ 				//return 0;
+ 			}	
+ 		}
+ 		return b;
+ 	}
+ 	
+ 	private static void conclusion ()//вывод текста с условием
+ 	{
+ 		System.out.println("Prints the Prime numbers up to N");
+ 		System.out.print("Set value N: ");
+ 	}
+ 	
+ 	private static int inputt()//считывает значение с терминала 
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextInt();
+ 	}
+ 	
+ 	private static int TheOutput (int r) //выводит результат
+ 	{
+ 		System.out.println(r);
+ 		return r;
+ 	}
+ }
+
+ class Palindrom
+ {
+ 	public static void main()  //основной метод который вызывает остальные 
+ 	{
+ 		conclusion ();
+ 		int a = 0;
+ 		String word = inputt();
+ 		char[] mass =word.toCharArray();
+ 		for (int i = 0; i <= ((mass.length-1)/2 - 1); i++) 
+ 		{
+ 			if (mass[i] == mass[mass.length-i-1])
+ 			{
+ 				a++;
+ 			}			
+ 		}
+ 		if (a==(mass.length-1)/2)
+ 		{
+ 			TheOutputYES ();
+ 		}
+ 		else 
+ 		{
+ 			TheOutputNO ();
+ 		}
+ 	}
+ 	
+ 	private static void conclusion ()//вывод текста с условием
+ 	{
+ 		System.out.println("definition of the word Palindrom");
+ 		System.out.print("Set the word: ");
+ 	}
+ 	
+ 	private static String inputt() //считывает значение с терминала 
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextLine();
+ 	}
+ 	
+ 	private static void TheOutputYES ()// выводит положительный текст 
+ 	{
+ 		System.out.println ("the word is Palindrom");
+ 	}
+ 	
+ 	private static void TheOutputNO () // выводит отрицатеьный текст
+ 	{
+ 		System.out.println("the word is not Palindrom");
+ 	}
+ }
