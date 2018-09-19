@@ -1,0 +1,76 @@
+import java.util.Scanner;
+class Main
+{
+	public static void main(String[] args) 
+	{
+		
+ 		conclusion ();
+ 		switch(input())
+ 		{
+ 			case 1:
+ 			{
+ 				Beetwin intt = Boolean();
+ 				intt.inputt;
+ 				conclusion1 ();
+ 				int A = inputt();
+ 				A = intt.A;
+				int B = inpett();
+				B = intt.B;
+				int C = inputt();
+				C = intt.C;
+ 				break;	
+ 			}
+ 			case 2:
+ 			{
+
+ 				break;
+ 			}
+ 		}
+	}
+
+
+	private static void conclusion ()
+ 	{
+ 		System.out.println("Select the number of tasks");
+ 		System.out.println("1) a+b+c");
+ 		System.out.println("2) Palindrom");
+ 		System.out.print(": ");
+ 	}
+
+ 	private static int input() 
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextInt();
+ 	}
+ 	private static void conclusion1 ()
+ 	{
+ 		System.out.println("Enther A B C through the button 'enter':");
+ 	}
+ }
+
+class Beetwin
+{
+	int A,B,C;
+	public static void main (String[] args) 
+	{
+		formula();
+	}
+	private static formula (int A, int B, int C)
+	{
+ 		A+B=A;
+ 		A+C=B;
+ 		TheOutput (B);
+	}
+
+ 	private static String inputt()
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextInt();
+ 	}
+ 	
+ 	private static int TheOutput (int r) //выводит результат
+ 	{
+ 		System.out.println(r);
+ 		return r;
+ 	}
+}
