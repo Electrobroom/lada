@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Point2d
+{
+	private double xCoord;
+	private double yCoord;
+	public Point2d(double x, double y) 
+	{
+        this.xCoord = x;
+        this.yCoord = y;
+	}
+	 
+	public Point3d()
+	{
+        this(0.0, 0.0);
+	}
+	
+ 	public double getX() 	
+	{
+        return x;
+    }
+
+    public void setX(double x) 
+	{
+        this.xCoord = x;
+    }
+
+    public double getY() 
+	{
+        return y;
+    }
+	
+	public void setY(double y) 
+	{
+        this.yCoord = y;
+    }
+}
