@@ -1,0 +1,67 @@
+import java.util.Scanner;
+public class Laba1 
+{
+	public static void main(String[] args) 
+ 	{
+		conclusion(1);
+		double x1 = inputt(); 
+		double y1 = inputt();
+		double z1 = inputt();
+		Point3d points1 = new Point3d(x1, y1, z1);
+
+		
+		conclusion(2);
+		double x2 = inputt(); 
+		double y2 = inputt();
+		double z2 = inputt();
+		Point3d points2 = new Point3d(x2, y2, z2);
+
+		
+		conclusion(3);
+		double x3 = inputt(); 
+		double y3 = inputt();
+		double z3 = inputt();
+		Point3d points3 = new Point3d(x3, y3, z3);
+
+
+		if (points1.equals(points2) || points1.equals(points3) || points2.equals(points3))
+		{
+			TheOutputError();
+		}
+		else 
+		{
+			double S = computeArea(points1.distanceTo(points2),points2.distanceTo(points3),points1.distanceTo(points3));
+			TheOutput(S);		
+		}
+ 	}
+
+ 	public static double computeArea(double x, double y, double z)
+ 	{
+ 		double P = (x + y + z) / 2;
+        double S = Math.sqrt(P * (P - x) * (P - y) * (P - z));
+        return S;
+	}
+
+ 	public static void conclusion (int a)//вывод текста с условием
+ 	{
+ 		System.out.println("Ether" + a + "point");
+ 	}
+ 	
+ 	public static Double inputt()//считывает значение с терминала 
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextDouble();
+ 	}
+ 	
+ 	public static void TheOutput(double resultat)//вывод рез.
+ 	{
+		System.out.println("Area = ");
+		System.out.println(resultat);
+	}
+
+	 	public static void TheOutputError()//вывод рез.
+ 	{
+		System.out.println("Error!!!");
+		System.out.println("Can't be equal points");
+	}
+}
