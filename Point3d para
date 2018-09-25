@@ -1,0 +1,67 @@
+public class Point3d
+{
+	private double xCoord; //Инитилизация Х точки.
+	private double yCoord; //Инитилизация Y точки.
+	private double zCoord; //Инитилизация Z точки.
+
+	public Point3d(double x, double y, double z) //Конструктор, чтобы инициализировать точку к (x, y, z) значение. 
+												 // Конструктор - метод который сразу инициализирует переменную при ее созданеи
+	{
+        this.xCoord = x;
+        this.yCoord = y;
+        this.zCoord = z;
+	}
+	 
+	public Point3d() //Конструктор без параметров: значения по умолчанию к точке в источнике.
+	{
+        this(0.0, 0.0, 0.0);
+	}
+	
+ 	public double getX() //Возвращает координату X точки.
+	{
+        return xCoord;
+    }
+
+    public void setX(double x) //Набор X координат точки.
+	{
+        this.xCoord = x;
+    }
+
+    public double getY() //Возвращает координату Y точки.
+	{
+        return yCoord;
+    }
+	
+	public void setY(double y) //Набор Y координат точки.
+	{
+        this.yCoord = y;
+    }
+
+    public double getZ() //Возвращает координату Z точки.
+	{
+        return zCoord;
+    }
+	
+	public void setZ(double z) //Набор Zкоординат точки.
+	{
+        this.zCoord = z;
+    }
+
+     public boolean equals(Point3d point3d) // Метод для проверки координат, на сходство
+    {
+        return this.xCoord == point3d.xCoord &&
+               this.yCoord == point3d.yCoord &&
+               this.zCoord == point3d.zCoord;
+    }
+
+    public double distanceTo(Point3d point) //Метод для вычисления двойной точнисти
+    {
+        double Dis = Math.sqrt(
+            Math.pow((point.xCoord - this.xCoord), 2) + 
+            Math.pow((point.yCoord - this.yCoord), 2) + 
+            Math.pow((point.zCoord - this.zCoord), 2));
+        double rounding_off = Math.round(Dis * 100.0) / 100.0;
+    	return rounding_off;
+
+    }
+}
