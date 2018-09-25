@@ -1,0 +1,68 @@
+import java.util.Scanner;
+public class Laba1 
+{
+	public static void main(String[] args) 
+ 	{
+		conclusion(1); // Вызывет метод с  выводом текста с условием для первой точки.
+		double x1 = inputt(); 
+		double y1 = inputt();
+		double z1 = inputt();
+		Point3d points1 = new Point3d(x1, y1, z1); // Создание объекта "points1" класса "Point3d"
+
+		
+		conclusion(2); // Вызывет метод с  выводом текста с условием для второй точки.
+		double x2 = inputt(); 
+		double y2 = inputt();
+		double z2 = inputt();
+		Point3d points2 = new Point3d(x2, y2, z2); // Создание объекта "points2" класса "Point3d"
+
+		
+		conclusion(3); // Вызывет метод с  выводом текста с услоием для третей точки.
+		double x3 = inputt(); 
+		double y3 = inputt();
+		double z3 = inputt();
+		Point3d points3 = new Point3d(x3, y3, z3); // Создание объекта "points3" класса "Point3d"
+
+
+		if (points1.equals(points2) || points1.equals(points3) || points2.equals(points3)) // Сравнение координат точек, с помошью метода "equals" из файла "Point3d.java".
+		{
+			TheOutputError(); // Вывод ощибки;
+		}
+		else 
+		{
+			double S = computeArea(points1,points2,points3); // Подсчет площади.
+			TheOutput(S);		
+		}
+ 	}
+
+ 	//public static double computeArea(double x, double y, double z)
+ 	public static double computeArea(Point3d  point1, Point3d  point2, Point3d  point3) // Метод для подсчета площади с помощью формулы Герона.
+ 	{
+ 		double P = (point1.distanceTo(point2) + point2.distanceTo(point3) + point1.distanceTo(point3)) / 2;
+        double S = Math.sqrt(P * (P - point1.distanceTo(point2)) * (P - point2.distanceTo(point3)) * (P - point2.distanceTo(point3)));
+        return S;
+	}
+
+ 	public static void conclusion (int a) // Вывод текста с условием.
+ 	{
+ 		System.out.println("Ether" + a + "point");
+ 	}
+ 	
+ 	public static Double inputt() // Считывает значение с терминала.
+ 	{
+ 		Scanner scanner = new Scanner(System.in);
+ 		return scanner.nextDouble();
+ 	}
+ 	
+ 	public static void TheOutput(double resultat) // Вывод ррезультата.
+ 	{
+		System.out.println("Area = ");
+		System.out.println(resultat);
+	}
+
+	 	public static void TheOutputError() // Вывод текста об ошибке.
+ 	{
+		System.out.println("Error!!!");
+		System.out.println("Can't be equal points");
+	}
+}
