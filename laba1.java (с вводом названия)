@@ -1,0 +1,93 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+public class laba1 
+{
+	public static void main(String[] args) 
+    {
+ 		String points = FileRead();
+        System.out.println(points);
+        String Area = "";
+        String[] pointthree = points.split(" ");
+        for (String point : pointthree) 
+        {
+            String[] coordinates = point.split(",");
+            if (coordinates.length == 9) 
+            {
+                Point3d points1 = new Point3d(Double.valueOf(coordinates[0]), Double.valueOf(coordinates[1]), Double.valueOf(coordinates[2]));
+                Point3d points2 = new Point3d(Double.valueOf(coordinates[3]), Double.valueOf(coordinates[4]), Double.valueOf(coordinates[5]));
+                Point3d points3 = new Point3d(Double.valueOf(coordinates[6]), Double.valueOf(coordinates[7]), Double.valueOf(coordinates[8]));
+
+                if (points1.equals(points2) || points1.equals(points3) || points2.equals(points3)) 
+                {
+					TheOutputError(); // Вывод ощибки;
+				}
+				else
+                 {
+					Area += computeArea(points1,points2,points3); // Подсчет площади.
+				}	
+			}
+		}	
+		FileWrite(Area);
+	}
+
+ 	 private static String FileRead() 
+     {
+ 	 	String everything = "";
+        Scanner scanner = new Scanner(System.in);
+        String filename = scanner.nextLine();
+        try 
+        {
+            BufferedReader br = new BufferedReader(new FileReader("/Users/mac/Desktop/lab/" + filename)); // Ввод названия файла из консоли
+            StringBuilder sb = new StringBuilder(); // ззачем нужен sb 
+            String line = br.readLine();
+            while (line != null) 
+            {
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+            }
+            everything = sb.toString();
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+       	return everything;
+    }
+
+    private static void FileWrite(String str) 
+    {
+        try
+        {
+            FileWriter writer = new FileWriter("Chlen.txt", false);
+            writer.write(str);
+            writer.flush();
+        } 
+        catch(IOException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+	public static void TheOutputError() 
+    {
+		System.out.println("Error!!!Poshel nahui");
+		System.out.println("Can't be equal points");
+	}
+
+	public static double computeArea(Point3d  point1, Point3d  point2, Point3d  point3) 
+    {
+ 		double P = (point1.distanceTo(point2) + point2.distanceTo(point3) + point1.distanceTo(point3)) / 2;
+        double S = Math.sqrt(P * (P - point1.distanceTo(point2)) * (P - point2.distanceTo(point3)) * (P - point2.distanceTo(point3)));
+        return S;
+	}
+
+	public static void TheOutput(double resultat) 
+    {
+		System.out.println("Area = 500");
+		System.out.println(resultat);
+	}
+}
